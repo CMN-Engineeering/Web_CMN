@@ -1,0 +1,238 @@
+:root {
+  --primary: #4caf50;
+  --background: #ecf0e5f4;
+  --text: #333;
+  --transition: 0.5s;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Parallax background for Gallery */
+.section.gallery {
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 0;
+}
+.parallax-bg {
+  background: url("gallery-bg.jpg") center/cover fixed;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+.logo {
+  color: var(--primary);
+  font-size: 1.5rem;
+}
+.nav a {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: var(--text);
+  transition: color var(--transition);
+}
+.nav a:hover {
+  color: var(--primary);
+}
+a {
+  text-decoration: none;
+  color: rgba(22, 176, 24, 0.698);
+}
+
+/* Hero */
+.hero {
+  background: url("hero-bg.jpg") center/cover fixed;
+  text-align: center;
+  color: #fff;
+  padding: 8rem 0 6rem;
+}
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--text);
+}
+
+.btn-primary {
+  background: #fff;
+  color: var(--primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background var(--transition), color var(--transition);
+}
+.btn-primary:hover {
+  background: #e8f5e9;
+}
+
+/* Sections general */
+.section {
+  padding: 6rem 0;
+  position: relative;
+}
+.about p,
+.contact p {
+  max-width: 700px;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+/* Services Cards */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  flex: 1 1 calc(25% - 2rem);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition) ease-out,
+    transform var(--transition) ease-out;
+}
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card i {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+/* Gallery Items */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.gallery-item figcaption {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: 0.5rem;
+}
+
+/* Address Section */
+.section.address p {
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+.map-container {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Form */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+.contact-form.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
+}
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer */
+.site-footer {
+  background: #222;
+  color: #aaa;
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 4rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+.site-footer.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
