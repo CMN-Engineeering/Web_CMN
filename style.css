@@ -1,9 +1,10 @@
 :root {
-  --primary: #4caf50;
-  --background: #ecf0e5f4;
-  --text: #333;
+  --primary: #33b66e83;
+  --background: #d5dad580;
+  --text: #212529;
   --transition: 0.5s;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -19,29 +20,15 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 0;
-}
-
-/* Parallax background for Gallery */
-.section.gallery {
-  position: relative;
-  overflow: hidden;
-  padding: 8rem 0;
-}
-.parallax-bg {
-  background: url("gallery-bg.jpg") center/cover fixed;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 /* Header */
 .site-header {
   position: fixed;
   width: 100%;
-  background: #fff;
+  background: #848b8294;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
@@ -66,12 +53,12 @@ body {
 }
 a {
   text-decoration: none;
-  color: rgba(22, 176, 24, 0.698);
+  color: rgba(81, 185, 83, 0.519);
 }
 
 /* Hero */
 .hero {
-  background: url("hero-bg.jpg") center/cover fixed;
+  background: url("./img/hero-bg.jpg") center/cover fixed;
   text-align: center;
   color: #fff;
   padding: 8rem 0 6rem;
@@ -80,6 +67,8 @@ a {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: var(--text);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 .hero p {
   font-size: 1.1rem;
@@ -88,20 +77,22 @@ a {
 }
 
 .btn-primary {
-  background: #fff;
-  color: var(--primary);
+  background: var(--primary);
+  color: #040c089f;
   padding: 0.75rem 1.5rem;
   border-radius: 2rem;
   text-decoration: none;
   font-weight: 600;
   transition: background var(--transition), color var(--transition);
 }
+
 .btn-primary:hover {
-  background: #e8f5e9;
+  background: darken(var(--primary), 10%);
 }
 
 /* Sections general */
 .section {
+  padding: 60px 0;
   padding: 6rem 0;
   position: relative;
 }
@@ -114,6 +105,7 @@ a {
 
 /* Services Cards */
 .cards {
+  padding: 60px 0;
   display: flex;
   flex-wrap: wrap;
   gap: 2rem;
@@ -161,6 +153,7 @@ a {
 
 /* Address Section */
 .section.address p {
+  padding: 60px 0;
   text-align: center;
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
@@ -255,6 +248,7 @@ html {
 
   .hero h2 {
     font-size: 1.8rem;
+    text-align: center;
   }
 
   .cards {
@@ -280,6 +274,7 @@ html {
 @media (max-width: 480px) {
   .hero h2 {
     font-size: 1.5rem;
+    text-align: center;
   }
 
   .hero p {
@@ -302,6 +297,7 @@ html {
 @media (max-width: 360px) {
   .hero h2 {
     font-size: 1.3rem;
+    text-align: center;
   }
 
   .hero p {
@@ -316,6 +312,7 @@ html {
 @media (max-width: 320px) {
   .hero h2 {
     font-size: 1.2rem;
+    text-align: center;
   }
 
   .hero p {
@@ -326,4 +323,99 @@ html {
     padding: 0.5rem 0.6rem;
     font-size: 0.7rem;
   }
+}
+/* Landscape orientation */
+@media screen and (orientation: landscape) {
+  /* Adjustments for landscape mode */
+  .hero {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .hero h2 {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .services .cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .services .card {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .about-text {
+    font-size: 1.2rem;
+  }
+
+  .site-footer {
+    text-align: center;
+    padding: 20px;
+  }
+}
+/* Sản phẩm */
+.products {
+  padding: 60px 0;
+  background-color: #f9f9f9;
+}
+
+.products h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 25px;
+  justify-items: center;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 10px 27px rgba(0, 0.4, 0, 0.7);
+}
+
+.product-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  font-size: 1.6rem;
+  margin: 15px 0;
+}
+
+.product-card p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 20px;
 }
