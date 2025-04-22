@@ -1,5 +1,5 @@
 :root {
-  --primary: #33b66e83;
+  --primary: #26a172a6;
   --background: #d5dad580;
   --text: #212529;
   --transition: 0.5s;
@@ -11,7 +11,7 @@
   box-sizing: border-box;
 }
 body {
-  font-family: "Segoe UI", sans-serif;
+  font-family: "Raleway", sans-serif;
   background: var(--background);
   color: var(--text);
 }
@@ -28,8 +28,8 @@ body {
 .site-header {
   position: fixed;
   width: 100%;
-  background: #848b8294;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: #848b8236;
+  box-shadow: 0 2px 4px rgba(0, 0, 0.3, 0.3);
   z-index: 1000;
 }
 .header-content {
@@ -60,7 +60,7 @@ a {
 .hero {
   background: url("./img/hero-bg.jpg") center/cover fixed;
   text-align: center;
-  color: #fff;
+  color: #ffffff43;
   padding: 8rem 0 6rem;
 }
 .hero h2 {
