@@ -1,184 +1,271 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CÔNG TY TNHH GIẢI PHÁP KỸ THUẬT CMN</title>
+    <link rel="icon" type="image/png" href="./img/Logo.png" />
     <link rel="stylesheet" href="./style.css" />
-    <!-- Thư viện biểu tượng -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      rel="stylesheet"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <!-- Header / Navigation -->
-    <header class="site-header">
-      <div class="container header-content reveal">
-        <h1 class="logo">CÔNG TY TNHH GIẢI PHÁP KỸ THUẬT CMN</h1>
-        <nav class="nav" id="navMenu">
-          <a href="#about">Về Chúng Tôi</a>
-          <a href="#services">Dịch Vụ</a>
-          <a href="#products">Sản phẩm</a>
-          <a href="#address">Địa Chỉ</a>
-          <a href="#contact">Liên Hệ</a>
-        </nav>
-        <button class="nav-toggle" id="navToggle" aria-label="Mở menu">
-          <i class="fas fa-bars"></i>
-        </button>
+    <header class="navbar">
+      <div class="logo">
+        <span>CÔNG TY TNHH GIẢI PHÁP KỸ THUẬT CMN</span>
       </div>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="./index.html">Trang Chủ</a></li>
+          <li><a href="./pages/about.html">Giới Thiệu</a></li>
+          <li><a href="./pages/services.html">Dịch Vụ</a></li>
+          <li><a href="./pages/products.html">Sản Phẩm</a></li>
+          <li><a href="./pages/contact.html">Liên Hệ</a></li>
+        </ul>
+      </nav>
     </header>
-
-    <!-- Hero Section -->
-    <section class="hero reveal">
-      <div class="container">
-        <h2>Giải pháp khoa học &amp; công nghệ toàn diện</h2>
-        <p>Nghiên cứu, phát triển và ứng dụng công nghệ chuyên sâu.</p>
-        <a href="#contact" class="btn-primary">Liên hệ ngay</a>
+    <!-- Chatbot Button -->
+    <div id="chatbot">
+      <div id="chatbot-header">
+        Hỗ trợ trực tuyến <span id="chatbot-close">&times;</span>
       </div>
-    </section>
+      <div id="chatbot-messages"></div>
+      <form id="chatbot-form">
+        <input
+          type="text"
+          id="chatbot-input"
+          placeholder="Nhập câu hỏi của bạn..."
+          autocomplete="off"
+        />
+        <button type="submit">Gửi</button>
+      </form>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="section about reveal">
-      <div class="container">
-        <h2>Về Chúng Tôi</h2>
-        <p>
-          CMN chuyên nghiên cứu khoa học &amp; phát triển công nghệ trong lĩnh
-          vực kỹ thuật, gia công cơ khí, in 3D, PCB và lập trình nhúng. Chúng
-          tôi cung cấp giải pháp tối ưu cho doanh nghiệp.
-        </p>
-      </div>
-    </section>
+    <!-- Chatbot Toggle Button -->
+    <button id="chatbot-toggle">💬</button>
 
-    <!-- Services Section -->
-    <section id="services" class="section services">
-      <div class="container">
-        <h2 class="reveal">Dịch Vụ</h2>
-        <div class="cards">
-          <div class="card reveal">
-            <i class="fas fa-flask fa-3x"></i>
-            <h3>Nghiên cứu &amp; Phát triển</h3>
-            <p>R&D công nghệ tiên tiến trong lĩnh vực kỹ thuật.</p>
-          </div>
-          <div class="card reveal">
-            <i class="fas fa-industry fa-3x"></i>
-            <h3>Gia công cơ khí &amp; In 3D</h3>
-            <p>Gia công cơ khí chính xác và in 3D chất lượng cao.</p>
-          </div>
-          <div class="card reveal">
-            <i class="fas fa-layer-group fa-3x"></i>
-            <h3>Gia công PCB</h3>
-            <p>Thiết kế, chế tạo và lắp ráp mạch PCB theo yêu cầu.</p>
-          </div>
-          <div class="card reveal">
-            <i class="fas fa-microchip fa-3x"></i>
-            <h3>Lập trình nhúng</h3>
-            <p>Phát triển phần mềm nhúng và tích hợp hệ thống IoT.</p>
-          </div>
+    <section class="hero">
+      <h1>Chào mừng đến với <span>CMN</span></h1>
+      <p>Giải pháp công nghệ 4.0 tối ưu cho doanh nghiệp bạn</p>
+      <a href="./pages/contact.html" class="btn">Liên hệ ngay</a>
+    </section>
+    <section class="why-choose">
+      <h2>Tại sao khách hàng chọn CMN?</h2>
+      <div class="features">
+        <div class="feature">
+          <img src="./img/icon-innovation.svg" alt="Innovation" />
+          <h3>Công nghệ tiên tiến</h3>
+          <p>Áp dụng công nghệ 4.0, R&D không ngừng cải tiến.</p>
+        </div>
+        <div class="feature">
+          <img src="./img/icon-quality.svg" alt="Quality" />
+          <h3>Chất lượng đảm bảo</h3>
+          <p>Quy trình kiểm soát chất lượng nghiêm ngặt.</p>
+        </div>
+        <div class="feature">
+          <img src="./img/icon-support.svg" alt="Support" />
+          <h3>Hỗ trợ tận tâm</h3>
+          <p>Đội ngũ chuyên gia sẵn sàng tư vấn 24/7.</p>
         </div>
       </div>
     </section>
-    <!-- Sản phẩm -->
-    <section id="products" class="section products">
-      <div class="container">
-        <h2>Sản phẩm</h2>
-        <div class="product-grid">
-          <div class="product-card">
-            <img
-              src="./img/circuit_1.jpg"
-              alt="Sản phẩm gia công mạch điện tử"
-            />
-            <h3>Mạch IOT công nghiệp</h3>
-            <!-- <p>Mô tả ngắn về sản phẩm 1.</p> -->
+    <section class="testimonials">
+      <h2>Khách hàng nói về chúng tôi</h2>
+      <div class="testimonial-wrapper">
+        <button class="arrow left">&#8592;</button>
+        <div class="testimonial-list">
+          <div class="testimonial">
+            <p>
+              "CMN đã giúp chúng tôi phát triển sản phẩm nhanh hơn với giải pháp
+              tối ưu."
+            </p>
+            <span>- Nguyễn Ngọc Tường</span>
           </div>
-          <div class="product-card">
-            <img src="./img/LOGO_BK.jpg" alt="Logo HCMUT" />
-            <h3>Logo Trường Đại học Bách Khoa TP.HCM</h3>
+          <div class="testimonial">
+            <p>"Đội ngũ tư vấn nhiệt tình, hỗ trợ tận tâm."</p>
+            <span>- Nguyễn Kỳ Nam </span>
           </div>
-          <div class="product-card">
-            <img
-              src="./drive-download-20250421T034117Z-001/drive-download-20250421T034117Z-001/Mạch GPS.jpg"
-              alt="Mạch GPS"
-            />
-            <h3>Mạch GPS</h3>
-          </div>
-          <div class="product-card">
-            <img src="./img/Robot_Delivery.jpg" alt="Robot_Delivery" />
-            <h3>Robot vận chuyển</h3>
-          </div>
-          <div class="product-card">
-            <img src="./img/may.jpg" alt="Robot_Delivery" />
-            <h3>Hệ thống đóng gói</h3>
+          <div class="testimonial">
+            <p>"Chất lượng dịch vụ rất chuyên nghiệp và nhanh chóng."</p>
+            <span>- Lê Văn Tín</span>
           </div>
         </div>
+        <button class="arrow right">&#8594;</button>
       </div>
     </section>
 
-    <!-- Address Section -->
-    <section id="address" class="section address reveal">
-      <div class="container">
-        <h2>Địa Chỉ Công Ty</h2>
-        <p>76 Cách Mạng Tháng 8, Phường Võ Thị Sáu, Quận 3, TP. Hồ Chí Minh</p>
-        <div class="map-container">
-          <iframe
-            width="100%"
-            height="350"
-            frameborder="0"
-            style="border: 0"
-            src="https://maps.google.com/maps?q=76%20C%C3%A1ch%20M%E1%BA%A1ng%20Th%C3%A1ng%208%20Ph%C6%B0%E1%BB%9Dng%20V%C3%B5%20Th%E1%BB%8B%20S%C3%A1u%20Qu%E1%BA%ADn%203%20H%E1%BB%93%20Ch%C3%AD%20Minh&output=embed"
-            allowfullscreen
-          >
-          </iframe>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>CMN Technology</h3>
+          <p>
+            Chúng tôi chuyên nghiên cứu khoa học & phát triển công nghệ trong
+            lĩnh vực kỹ thuật, gia công cơ khí, in 3D, PCB và lập trình nhúng.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Liên kết nhanh</h4>
+          <ul>
+            <li><a href="./index.html">Trang Chủ</a></li>
+            <li><a href="./pages/about.html">Giới Thiệu</a></li>
+            <li><a href="./pages/services.html">Dịch Vụ</a></li>
+            <li><a href="./pages/products.html">Sản Phẩm</a></li>
+            <li><a href="./pages/contact.html">Liên Hệ</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Liên hệ</h4>
+          <p>Email: nhan.cmn@cmnes.com</p>
+          <p>Điện thoại: 0704 558 624</p>
+          <p>
+            Địa chỉ: 76 Cách Mạng Tháng 8, Phường Võ Thị Sáu, Quận 3, TP. Hồ Chí
+            Minh
+          </p>
         </div>
       </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact reveal">
-      <div class="container">
-        <h2>Liên Hệ</h2>
-        <p>Gửi yêu cầu hoặc thắc mắc, chúng tôi sẵn sàng hỗ trợ ngay.</p>
-        <p>
-          <i class="fas fa-phone-alt"></i> 0704 558 624 &nbsp;&nbsp;
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:nhan.cmn@cmnes.com">nhan.cmn@cmnes.com</a>
-        </p>
-        <form class="contact-form reveal">
-          <input type="text" placeholder="Họ và tên" required />
-          <input type="email" placeholder="Email" required />
-          <textarea rows="5" placeholder="Nội dung" required></textarea>
-          <button type="submit" class="btn-primary">Gửi</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer reveal">
-      <div class="container">
-        <p>&copy; 2025 CÔNG TY TNHH GIẢI PHÁP KỸ THUẬT CMN.</p>
-        <p>
-          <i class="fas fa-phone-alt"></i> 0704 558 624 &nbsp;&nbsp;
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:nhan.cmn@cmnes.com">nhan.cmn@cmnes.com</a>
-        </p>
-        <p>
-          Designed by
-          <a
-            href="https://www.linkedin.com/in/tringuyenluongminh/"
-            target="_blank"
-            >Tris Nguyen</a
-          >
-        </p>
+      <div class="footer-bottom">
+        <p>© 2025 CMN Technology. Bản quyền thuộc về CMN.</p>
       </div>
     </footer>
+    <script>
+      const chatbot = document.getElementById("chatbot");
+      const chatbotToggle = document.getElementById("chatbot-toggle");
+      const chatbotClose = document.getElementById("chatbot-close");
+      const chatbotForm = document.getElementById("chatbot-form");
+      const chatbotInput = document.getElementById("chatbot-input");
+      const chatbotMessages = document.getElementById("chatbot-messages");
 
-    <script src="./script.js"></script>
+      // Mở / đóng chatbot
+      chatbotToggle.addEventListener("click", () => {
+        chatbot.style.display = "flex";
+        chatbotToggle.style.display = "none";
+        chatbotInput.focus();
+      });
+
+      chatbotClose.addEventListener("click", () => {
+        chatbot.style.display = "none";
+        chatbotToggle.style.display = "block";
+      });
+
+      function getBotResponse(message) {
+        const msg = message.toLowerCase();
+
+        if (msg.includes("xin chào") || msg.includes("hello")) {
+          return "Chào bạn! Tôi có thể hỗ trợ gì cho bạn hôm nay?";
+        }
+
+        if (
+          msg.includes("cmn") ||
+          msg.includes("cmnes.com") ||
+          msg.includes("công ty") ||
+          msg.includes("công ty cmn") ||
+          msg.includes("cmn vietnam") ||
+          msg.includes("cmn việt nam") ||
+          msg.includes("cmn vn")
+        ) {
+          return "CMN là công ty chuyên cung cấp các dịch vụ kỹ thuật cao như R&D, thiết kế và sản xuất PCB, lập trình nhúng, gia công cơ khí chính xác và in 3D. Chúng tôi cam kết mang đến giải pháp toàn diện từ ý tưởng đến sản phẩm hoàn thiện.";
+        }
+
+        if (
+          msg.includes("dịch vụ") ||
+          msg.includes("r&d") ||
+          msg.includes("nghiên cứu và phát triển") ||
+          msg.includes("thiết kế mạch") ||
+          msg.includes("pcb") ||
+          msg.includes("lập trình nhúng") ||
+          msg.includes("firmware") ||
+          msg.includes("cơ khí chính xác") ||
+          msg.includes("in 3d") ||
+          msg.includes("in 3d kim loại") ||
+          msg.includes("gia công") ||
+          msg.includes("prototyping") ||
+          msg.includes("sản xuất thử nghiệm") ||
+          msg.includes("sản xuất hàng loạt")
+        ) {
+          return "Chúng tôi cung cấp các dịch vụ: Nghiên cứu & Phát triển (R&D), thiết kế và sản xuất PCB, lập trình nhúng, gia công cơ khí chính xác, in 3D kim loại và nhựa, cũng như hỗ trợ sản xuất từ mẫu thử đến hàng loạt.";
+        }
+
+        if (
+          msg.includes("liên hệ") ||
+          msg.includes("liên lạc") ||
+          msg.includes("contact") ||
+          msg.includes("email") ||
+          msg.includes("số điện thoại") ||
+          msg.includes("hotline")
+        ) {
+          return "Bạn có thể liên hệ với chúng tôi qua email: nhan.cmn@cmnes.com hoặc số điện thoại: 0704 558 624.";
+        }
+
+        if (
+          msg.includes("giá") ||
+          msg.includes("báo giá") ||
+          msg.includes("chi phí") ||
+          msg.includes("bao nhiêu") ||
+          msg.includes("tư vấn giá") ||
+          msg.includes("bảng giá")
+        ) {
+          return "Vui lòng cung cấp thông tin chi tiết về yêu cầu của bạn để chúng tôi có thể báo giá chính xác và phù hợp nhất.";
+        }
+
+        return "Rất tiếc, tôi chưa hiểu câu hỏi của bạn. Bạn vui lòng hỏi lại hoặc liên hệ trực tiếp với chúng tôi để được hỗ trợ tốt hơn!";
+      }
+
+      // Hiển thị tin nhắn
+      function addMessage(text, sender) {
+        const msgDiv = document.createElement("div");
+        msgDiv.classList.add("message", sender);
+        msgDiv.textContent = text;
+        chatbotMessages.appendChild(msgDiv);
+        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+      }
+
+      // Xử lý gửi form
+      chatbotForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const userInput = chatbotInput.value.trim();
+        if (!userInput) return;
+        addMessage(userInput, "user");
+        chatbotInput.value = "";
+
+        setTimeout(() => {
+          const botReply = getBotResponse(userInput);
+          addMessage(botReply, "bot");
+        }, 800);
+      });
+      const list = document.querySelector(".testimonial-list");
+      const testimonials = document.querySelectorAll(".testimonial");
+      const btnLeft = document.querySelector(".arrow.left");
+      const btnRight = document.querySelector(".arrow.right");
+
+      const testimonialWidth = testimonials[0].offsetWidth + 20; // 600 + 20 margin
+      const maxIndex = testimonials.length - 1;
+
+      let currentIndex = 0;
+
+      function updateSlide() {
+        list.style.transform = `translateX(-${
+          currentIndex * testimonialWidth
+        }px)`;
+      }
+
+      btnLeft.addEventListener("click", () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlide();
+        }
+      });
+
+      btnRight.addEventListener("click", () => {
+        if (currentIndex < maxIndex) {
+          currentIndex++;
+          updateSlide();
+        }
+      });
+    </script>
   </body>
 </html>

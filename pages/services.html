@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dịch Vụ</title>
+    <link rel="icon" type="image/png" href="../img/Logo.png" />
+    <link rel="stylesheet" href="../style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">CÔNG TY TNHH GIẢI PHÁP KỸ THUẬT CMN</div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html">Trang Chủ</a></li>
+          <li><a href="./about.html">Giới Thiệu</a></li>
+          <li><a href="./services.html">Dịch Vụ</a></li>
+          <li><a href="./products.html">Sản Phẩm</a></li>
+          <li><a href="./contact.html">Liên Hệ</a></li>
+        </ul>
+      </nav>
+    </header>
+    <section id="services" class="section services">
+      <div class="container">
+        <!-- <h2 class="reveal">Dịch Vụ</h2> -->
+        <div class="cards">
+          <div class="card reveal">
+            <i class="fas fa-flask fa-3x"></i>
+            <h3>Nghiên cứu &amp; Phát triển</h3>
+            <p>R&D công nghệ tiên tiến trong lĩnh vực kỹ thuật.</p>
+          </div>
+          <div class="card reveal">
+            <i class="fas fa-industry fa-3x"></i>
+            <h3>Gia công cơ khí &amp; In 3D</h3>
+            <p>Gia công cơ khí chính xác và in 3D chất lượng cao.</p>
+          </div>
+          <div class="card reveal">
+            <i class="fas fa-layer-group fa-3x"></i>
+            <h3>Gia công PCB</h3>
+            <p>Thiết kế, chế tạo và lắp ráp mạch PCB theo yêu cầu.</p>
+          </div>
+          <div class="card reveal">
+            <i class="fas fa-microchip fa-3x"></i>
+            <h3>Lập trình nhúng</h3>
+            <p>Phát triển phần mềm nhúng và tích hợp hệ thống IoT.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 2rem">
+          <h3>Trải nghiệm mô hình 3D</h3>
+          <p>Tải lên file 3D (STL) để xem mô hình tương tác:</p>
+          <input type="file" id="fileInput" accept=".stl" />
+          <div
+            id="viewer"
+            style="
+              width: 600px;
+              height: 400px;
+              border: 1px solid #3e85267e;
+              margin-top: 1.2rem;
+            "
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.130.1/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.130.1/examples/js/loaders/STLLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.130.1/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+      const MAX_SIZE_MB = 100;
+      const container = document.getElementById("viewer");
+      const message = document.createElement("div");
+      message.style.color = "#c62828";
+      message.style.marginTop = "0.5rem";
+      container.parentNode.insertBefore(message, container.nextSibling);
+
+      const scene = new THREE.Scene();
+
+      // Background gradient
+      const canvas = document.createElement("canvas");
+      canvas.width = 1;
+      canvas.height = 256;
+      const ctx = canvas.getContext("2d");
+      const gradient = ctx.createLinearGradient(0, 0, 0, 256);
+      gradient.addColorStop(0, "#1e3c72"); // xanh đậm
+      gradient.addColorStop(1, "#1e3c72"); // xanh sáng
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, 1, 256);
+      const bgTexture = new THREE.CanvasTexture(canvas);
+      scene.background = bgTexture;
+
+      // Ánh sáng môi trường nhẹ hơn, tone xanh dương
+      const ambientLight = new THREE.AmbientLight(0x403583, 1.2);
+      scene.add(ambientLight);
+
+      // Ánh sáng chính có bóng, màu trắng lạnh
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+      directionalLight.position.set(5, 10, 7);
+      directionalLight.castShadow = true;
+      directionalLight.shadow.mapSize.width = 2048;
+      directionalLight.shadow.mapSize.height = 2048;
+      scene.add(directionalLight);
+
+      // Ánh sáng rim light phía sau model để tạo viền sáng
+      const rimLight = new THREE.DirectionalLight(0x1e3c72, 0.6);
+      rimLight.position.set(-5, -5, 10);
+      scene.add(rimLight);
+
+      const camera = new THREE.PerspectiveCamera(75, 600 / 400, 0.1, 1000);
+      camera.position.set(0, 0, 100);
+
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+      });
+      renderer.setSize(600, 400);
+      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.type = THREE.PCFSoftShadowMap; // shadow mềm
+      container.appendChild(renderer.domElement);
+
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true; // mượt mà hơn
+      controls.dampingFactor = 0.05;
+      controls.minDistance = 10;
+      controls.maxDistance = 500;
+
+      let mesh;
+
+      // EnvMap để phản chiếu
+      const cubeTextureLoader = new THREE.CubeTextureLoader();
+      const envMap = cubeTextureLoader.load([
+        "https://threejs.org/examples/textures/cube/Bridge2/posx.jpg",
+        "https://threejs.org/examples/textures/cube/Bridge2/negx.jpg",
+        "https://threejs.org/examples/textures/cube/Bridge2/posy.jpg",
+        "https://threejs.org/examples/textures/cube/Bridge2/negy.jpg",
+        "https://threejs.org/examples/textures/cube/Bridge2/posz.jpg",
+        "https://threejs.org/examples/textures/cube/Bridge2/negz.jpg",
+      ]);
+
+      function loadSTL(file) {
+        if (file.size > MAX_SIZE_MB * 1024 * 1024) {
+          message.textContent = `File quá lớn (> ${MAX_SIZE_MB}MB). Vui lòng liên hệ chúng tôi để được hỗ trợ dịch vụ tải file lớn hơn.`;
+          return;
+        } else {
+          message.textContent = "";
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const contents = e.target.result;
+          const loader = new THREE.STLLoader();
+          const geometry = loader.parse(contents);
+
+          if (mesh) {
+            scene.remove(mesh);
+            mesh.geometry.dispose();
+            mesh.material.dispose();
+            mesh = null;
+          }
+
+          geometry.computeBoundingBox();
+          const boundingBox = geometry.boundingBox;
+          const size = new THREE.Vector3();
+          boundingBox.getSize(size);
+          const center = new THREE.Vector3();
+          boundingBox.getCenter(center);
+          geometry.translate(-center.x, -center.y, -center.z);
+
+          const material = new THREE.MeshPhysicalMaterial({
+            color: 0x2ecc71,
+            metalness: 0.7,
+            roughness: 0.2,
+            clearcoat: 0.5,
+            clearcoatRoughness: 0.1,
+            envMap: envMap,
+            envMapIntensity: 1.0,
+            emissive: 0x0a3d0a,
+            emissiveIntensity: 0.3,
+            reflectivity: 0.5,
+            side: THREE.DoubleSide,
+          });
+
+          mesh = new THREE.Mesh(geometry, material);
+          mesh.castShadow = true;
+          mesh.receiveShadow = true;
+          scene.add(mesh);
+
+          // Đặt camera theo kích thước model
+          const maxDim = Math.max(size.x, size.y, size.z);
+          camera.position.set(0, 0, maxDim * 2.5);
+          controls.target.set(0, 0, 0);
+          controls.update();
+
+          render();
+        };
+        reader.readAsArrayBuffer(file);
+      }
+
+      document
+        .getElementById("fileInput")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            loadSTL(file);
+          }
+        });
+
+      let autoRotateSpeed = 0.001;
+      function render() {
+        requestAnimationFrame(render);
+        controls.update();
+
+        // Tự động xoay nhẹ model khi người dùng không thao tác
+        if (!controls.userIsInteracting) {
+          mesh && (mesh.rotation.y += autoRotateSpeed);
+        }
+
+        renderer.render(scene, camera);
+      }
+
+      controls.userIsInteracting = false;
+      renderer.domElement.addEventListener("mousedown", () => {
+        controls.userIsInteracting = true;
+      });
+      renderer.domElement.addEventListener("mouseup", () => {
+        controls.userIsInteracting = false;
+      });
+
+      render();
+
+      // Scroll Reveal (giữ nguyên)
+      const reveals = document.querySelectorAll(".reveal");
+      function revealOnScroll() {
+        for (let i = 0; i < reveals.length; i++) {
+          const windowHeight = window.innerHeight;
+          const elementTop = reveals[i].getBoundingClientRect().top;
+          if (elementTop < windowHeight - 100) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+      window.addEventListener("scroll", revealOnScroll);
+      revealOnScroll();
+    </script>
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-about">
+          <h3>CMN Technology</h3>
+          <p>
+            Chúng tôi chuyên nghiên cứu khoa học & phát triển công nghệ trong
+            lĩnh vực kỹ thuật, gia công cơ khí, in 3D, PCB và lập trình nhúng.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Liên kết nhanh</h4>
+          <ul>
+            <li><a href="../index.html">Trang Chủ</a></li>
+            <li><a href="./about.html">Giới Thiệu</a></li>
+            <li><a href="./services.html">Dịch Vụ</a></li>
+            <li><a href="./products.html">Sản Phẩm</a></li>
+            <li><a href="./contact.html">Liên Hệ</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Liên hệ</h4>
+          <p>Email: nhan.cmn@cmnes.com</p>
+          <p>Điện thoại: 0704 558 624</p>
+          <p>
+            Địa chỉ: 76 Cách Mạng Tháng 8, Phường Võ Thị Sáu, Quận 3, TP. Hồ Chí
+            Minh
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 CMN Technology. Bản quyền thuộc về CMN.</p>
+      </div>
+    </footer>
+  </body>
+</html>
