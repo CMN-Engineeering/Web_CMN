@@ -755,45 +755,76 @@ input[type="file"] {
   cursor: pointer;
 }
 
-/* === Responsive Styles === */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+/* === Navbar Base Styles === */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background-color: #7a9c8b;
+  flex-wrap: wrap;
+}
 
+.logo span {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #000;
+  white-space: nowrap;
+}
+
+/* === Menu === */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 500;
+}
+
+/* === Toggle Button === */
+.menu-toggle {
+  display: none;
+  font-size: 1.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+}
+
+/* === Responsive for Mobile === */
+@media (max-width: 768px) {
   .menu-toggle {
     display: block;
-    align-self: flex-end;
+    margin-left: auto;
   }
 
-  .navbar nav .menu {
+  .nav-links {
     display: none;
     flex-direction: column;
     width: 100%;
     margin-top: 1rem;
-    gap: 1rem;
-    padding-left: 0;
   }
 
-  .navbar nav .menu.show {
+  .nav-links.show {
     display: flex;
   }
 
-  .navbar nav .menu li {
-    width: 100%;
-  }
-
-  .navbar nav .menu li a {
-    display: block;
-    width: 100%;
+  .nav-links li a {
     padding: 0.75rem 1rem;
-    background-color: #1f2937; /* slate-800 */
-    border-radius: 0.375rem;
+    background-color: #bcd2c4;
+    border-radius: 4px;
   }
 
-  .navbar nav .menu li a:hover {
-    background-color: #427b5a86; /* slate-700 */
-    color: #427b5a86;
+  .logo span {
+    font-size: 0.875rem;
+    max-width: 80vw;
+    white-space: normal;
+    word-wrap: break-word;
   }
 }
