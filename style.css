@@ -631,3 +631,73 @@ input[type="file"] {
   color: #333;
   font-weight: 600;
 }
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar nav ul {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .navbar nav ul li {
+    width: 100%;
+  }
+
+  .navbar nav ul li a {
+    display: block;
+    padding: 0.5rem 0;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-about,
+  .footer-links,
+  .footer-contact {
+    width: 100%;
+  }
+
+  .footer-links ul {
+    padding-left: 0;
+  }
+
+  .footer-links ul li a {
+    display: inline-block;
+  }
+}
+
+.menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: #000000c6;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar nav ul {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .navbar nav ul.show {
+    display: flex;
+  }
+}

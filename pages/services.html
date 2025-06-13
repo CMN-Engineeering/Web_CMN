@@ -14,6 +14,13 @@
   <body>
     <header class="navbar">
       <div class="logo">CÔNG TY TNHH GIẢI PHÁP KỸ THUẬT CMN</div>
+      <button
+        class="menu-toggle"
+        onclick="document.querySelector('.navbar nav ul').classList.toggle('show')"
+      >
+        ☰
+      </button>
+
       <nav>
         <ul class="nav-links">
           <li><a href="../index.html">Trang Chủ</a></li>
@@ -125,7 +132,7 @@
 
       const controls = new THREE.OrbitControls(camera, renderer.domElement);
       controls.enableDamping = true; // mượt mà hơn
-      controls.dampingFactor = 0.05;
+      controls.dampingFactor = 0.1;
       controls.minDistance = 10;
       controls.maxDistance = 500;
 
@@ -192,8 +199,8 @@
 
           // Đặt camera theo kích thước model
           const maxDim = Math.max(size.x, size.y, size.z);
-          camera.position.set(0, 0, maxDim * 2.5);
-          controls.target.set(0, 0, 0);
+          camera.position.set(0, 0, maxDim * 1.0);
+          controls.target.set(0, 0.5, 0);
           controls.update();
 
           render();
