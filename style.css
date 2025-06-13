@@ -23,7 +23,7 @@ body {
 
 /* Thanh điều hướng */
 .navbar {
-  background-color: #427b5a86;
+  background-color: #15171686;
   color: #000000c6;
   padding: 1rem;
   /* position: sticky; */
@@ -708,8 +708,8 @@ input[type="file"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #1e3a3a;
-  color: #ffffff;
+  background-color: #48584b;
+  color: #141313;
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
@@ -719,9 +719,9 @@ input[type="file"] {
 
 /* === Logo === */
 .navbar .logo {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  color: #d1fae5;
+  color: #141615;
   text-decoration: none;
 }
 
