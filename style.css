@@ -677,6 +677,7 @@ input[type="file"] {
   }
 }
 
+/* Toggle menu nút */
 .menu-toggle {
   display: none;
   font-size: 1.5rem;
@@ -699,5 +700,100 @@ input[type="file"] {
 
   .navbar nav ul.show {
     display: flex;
+  }
+}
+
+/* === Header General Styles === */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1e3a3a;
+  color: #ffffff;
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* === Logo === */
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #d1fae5;
+  text-decoration: none;
+}
+
+/* === Menu (Desktop) === */
+.navbar nav .menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar nav .menu li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar nav .menu li a:hover {
+  color: #427b5a86; /* emerald-400 */
+}
+
+/* === Toggle Button (Mobile) === */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* === Responsive Styles === */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-toggle {
+    display: block;
+    align-self: flex-end;
+  }
+
+  .navbar nav .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+    gap: 1rem;
+    padding-left: 0;
+  }
+
+  .navbar nav .menu.show {
+    display: flex;
+  }
+
+  .navbar nav .menu li {
+    width: 100%;
+  }
+
+  .navbar nav .menu li a {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: #1f2937; /* slate-800 */
+    border-radius: 0.375rem;
+  }
+
+  .navbar nav .menu li a:hover {
+    background-color: #427b5a86; /* slate-700 */
+    color: #427b5a86;
   }
 }
